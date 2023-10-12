@@ -60,3 +60,24 @@ def user_login(request):
         return render(request,'blog/login.html', {'form':form})
     else:
        return HttpResponseRedirect('/dashbord/')
+
+#Add Post
+def addpost(request):
+     if request.user.is_authenticated:
+      return render(request,'blog/addpost.html') 
+     else:
+       return HttpResponseRedirect('/login/')
+
+#Update Post
+def updatepost(request):
+    if request.user.is_authenticated:
+      return render(request,'blog/updatepost.html') 
+    else:
+       return HttpResponseRedirect('/login/')
+    
+#Delete Post
+def deletepost(request):
+    if request.user.is_authenticated:
+      return HttpResponseRedirect('/dashbord/')
+    else:
+       return HttpResponseRedirect('/login/')

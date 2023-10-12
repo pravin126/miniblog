@@ -18,11 +18,12 @@
 
 <div class="col-sm-10">
     <h3 class="white-text my-5">Dashbord Page</h3>
+    <a href="{% url 'addpost' %}" class="btn btn-success">Add Post</a>
     <h4 class="text-center alert alert-info mt-3">Show Post Information</h4>
     {% if posts %}
     <table class="table table-hover bg-white">
         <thead>
-            <tr class="text-center"></tr>
+            <tr class="text-center">
                 <th class="scope col" style="width: 2%;">ID</th>
                 <th class="scope col" style="width: 28%;">Title</th>
                 <th class="scope col" style="width: 55%;">Discription</th>
@@ -36,8 +37,8 @@
                     <td>{{post.title}}</td>
                     <td>{{post.desc}}</td>
                     <td class="text-center">
-                        <a href=""class="btn btn-warning btn-sm">Edit</a>
-                        <form action="" method="post" class="d-inline">{% csrf_token %}
+                        <a href="{% url 'updatepost' post.id %}"class="btn btn-warning btn-sm">Edit</a>
+                        <form action="{% url 'deletepost' post.id %}" method="post" class="d-inline">{% csrf_token %}
                             <input type="submit" class="btn btn-danger btn-sm" value="Delete">
                         </form>
                     </td>
